@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fixed header and aside layout</title>
+    <link rel="stylesheet" href="../style/common.css" />
+    <link rel="stylesheet" href="../style/layout.css" />
+  </head>
+  <body>
+    <header class="ml-header ml-header--fixed bg-color-black">
+      <div class="title-placeholder"></div>
+    </header>
+    <aside class="ml-fixed-aside bg-color-black"></aside>
+    <main class="ml-main-without-aside-header">
+      <div class="content">
+        <h3 class="guide-tt">HTML</h3>
+        <pre>
+        header.fixed-header>inner-center
+        .container>.inner-center
+      </pre
+        >
+        <h3 class="guide-tt">CSS</h3>
+        <pre>
+        :root {
+          --header-height: 80px;
+        }
+        .fixed-header {
+          position: sticky;
+          height: var(--header-height);
+          z-index: var(--header-z-index, 5000);
+        }
+        .container {
+          min-height: calc(100vh - var(--header-height));
+        }
+        .inner-center {
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      </pre
+        >
+      </div>
+    </main>
+  </body>
+</html>
