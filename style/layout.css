@@ -97,10 +97,17 @@
 
 /*
 * 固定顶部和左边栏布局
+* 设置 margin top 与 left ，空出顶部与左边栏的位置
+* 设置高度，实现 main 区域的垂直滚动
+* 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动
 */
-.ml-main-without-aside-header {
+.ml-main-without-header-and-aside {
   margin-left: var(--ml-aside-left-width);
   margin-top: var(--ml-header-height);
   height: calc(100vh - var(--ml-header-height));
-  overflow-y: auto;
+  overflow: auto;
+}
+
+.ml-main-without-header-and-aside .ml-main-inner {
+  min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
 }

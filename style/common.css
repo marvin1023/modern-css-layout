@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html {
   font-size: 16px;
   line-height: 1.5;
@@ -29,6 +32,20 @@ body {
   background: #3b8686;
 }
 
+.page-tt {
+  font-size: 24px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.justify-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 pre {
   margin: 0;
   padding: 10px;
@@ -47,8 +64,43 @@ pre {
   border-radius: 5px;
 }
 
-.p-placeholder {
+.text-placeholder {
   padding: 10px 0;
+  width: 150px;
+}
+
+.text-placeholder::before {
+  content: "";
+  display: block;
+  background: #999;
+  border-radius: 5px;
+  height: 10px;
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+}
+
+.logo-placeholder::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #ccc;
+}
+
+.logo-placeholder::after {
+  content: "";
+  width: 80px;
+  height: 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  background: #ccc;
+}
+
+.flex-center {
+  display: flex;
 }
 
 .p-placeholder::before {
@@ -65,4 +117,5 @@ pre {
   display: block;
   line-height: 2;
   font-size: 18px;
+  font-weight: bold;
 }
