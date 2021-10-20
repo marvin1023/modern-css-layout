@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fixed header and aside layout</title>
-    <link rel="stylesheet" href="../style/common.css" />
-    <link rel="stylesheet" href="../style/layout.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="../layout.css" />
   </head>
   <body>
     <header class="ml-fixed-header justify-content p10 bg-color-black">
@@ -22,7 +22,7 @@
     <main class="ml-main-without-header-and-aside">
       <div class="ml-main-inner">
         <div class="p10">
-          <h1 class="page-tt">固定顶部及左边栏布局</h1>
+          <h1 class="page-tt">固定头部及边栏布局</h1>
           <h3 class="guide-tt">HTML 结构如下：</h3>
           <pre>
   header.ml-fixed-header
@@ -37,7 +37,7 @@
   --ml-min-width: 1200px; /* 最小宽度 */
   --ml-header-height: 60px; /* header 高度 */
   --ml-header-z-index: 5000; /* header z-index */
-  --ml-aside-left-width: 300px; /* 左边栏宽度 */
+  --ml-aside-left-width: 300px; /* 边栏宽度 */
 }
 .ml-fixed-header {
   position: fixed;
@@ -47,7 +47,7 @@
   height: var(--ml-header-height);
   z-index: var(--ml-header-z-index);
 }
-/* 固定左边栏 */
+/* 固定边栏 */
 .ml-fixed-aside {
   position: fixed;
   top: var(--ml-header-height);
@@ -56,8 +56,8 @@
   width: var(--ml-aside-left-width);
 }            
 /*
-* 固定顶部和左边栏布局
-* 设置 margin top 与 left ，空出顶部与左边栏的位置
+* 固定顶部和边栏布局
+* 设置 margin top 与 left ，空出顶部与边栏的位置
 * 设置高度，实现 main 区域的垂直滚动
 * 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动
 */
@@ -74,14 +74,19 @@
           </pre>
           <h3 class="guide-tt">注意点：</h3>
           <p class="des">
-            由于顶部和左边栏均固定，所以当内容需要滚动的时候，就不再是默认的全局滚动条，而是
-            main 这块的局部滚动。
+            这块的局部滚动。
+            由于顶部和边栏均固定，所以当内容需要滚动的时候，就不再是默认的全局滚动条，而是
+            主体 main
           </p>
           <p class="des">
             垂直滚动，可以通过设置main 的高度（calc(100vh -
             var(--ml-header-height))）来实现；而水平滚动，则需要嵌套一层
             main-inner，设置最小宽度（calc(var(--ml-min-width) -
             var(--ml-aside-left-width))）来实现
+          </p>
+          <p class="des">
+            由于高度可以根据内容自动伸展，而宽度则是由父容器本身的宽度来决定的，所以为了实现
+            X 轴的滚动，需要嵌套一层。
           </p>
         </div>
       </div>

@@ -1,0 +1,114 @@
+/* 
+* ml 为 moder layout 的缩写
+*/
+
+:root {
+  --ml-width: var(--reset-ml-width, 1200px); /* 固定宽度与最大宽度的取值 */
+  --ml-min-width: var(--reset-ml-min-width, 1200px); /* 最小宽度 */
+  --ml-min-height: var(--reset-ml-min-height, 100vh); /* 最小高度 */
+  --ml-header-height: var(--reset-ml-header-height, 60px);
+  --ml-header-z-index: var(--reset-ml-header-z-index, 5000);
+  --ml-aside-left-width: var(
+    --reset-ml-side-left-width,
+    300px
+  ); /* 左边栏宽度 */
+  --ml-aside-right-width: var(
+    --reset-ml-aside-right-width,
+    300px
+  ); /* 右边栏宽度 */
+}
+
+/* 
+* 内容水平居中设计，x 表示水平方向
+* 可以使用 width 或 max-width
+* width 为固定宽度
+* max-width 在大于该宽度时为固定的宽度，当小于该宽度时则为流体宽度
+*/
+.ml-x-center {
+  max-width: var(--ml-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+* 最小宽度
+* ml-x-content 父级元素，挂一个 ml-min-width
+*/
+.ml-min-width {
+  min-width: var(--ml-min-width);
+}
+
+/* 
+* 左边栏布局
+* 内容宽度为除掉边栏宽度后的剩余容器宽度
+*/
+.ml-main-with-aside-left {
+  display: grid;
+  grid-template-columns: var(--ml-aside-left-width) 1fr;
+}
+
+/* 
+* 右边栏布局
+* 内容宽度为除掉边栏宽度后的剩余容器宽度
+*/
+.ml-main-with-aside-right {
+  display: grid;
+  grid-template-columns: 1fr var(--ml-aside-right-width);
+}
+
+/* 
+* 左右边栏布局
+* 内容宽度为除掉边栏宽度后的剩余容器宽度
+*/
+.ml-main-with-aside-both {
+  display: grid;
+  grid-template-columns: var(--ml-aside-left-width) 1fr var(
+      --ml-aside-left-width
+    );
+}
+
+/* sticky header */
+.ml-sticky-header {
+  position: sticky;
+  top: 0;
+  height: var(--ml-header-height);
+  z-index: var(--ml-header-z-index);
+}
+
+/* 
+* fixed header
+*/
+.ml-fixed-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: var(--ml-header-height);
+  z-index: var(--ml-header-z-index);
+}
+
+/* 固定左边栏 */
+.ml-fixed-aside {
+  position: fixed;
+  top: var(--ml-header-height);
+  bottom: 0;
+  left: 0;
+  width: var(--ml-aside-left-width);
+}
+
+/*
+* 固定顶部和左边栏布局
+* 设置 margin top 与 left ，空出顶部与左边栏的位置
+* 设置高度，实现 main 区域的垂直滚动
+* 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动
+*/
+.ml-main-without-header-and-aside {
+  margin-left: var(--ml-aside-left-width);
+  margin-top: var(--ml-header-height);
+  height: calc(100vh - var(--ml-header-height));
+  overflow: auto;
+}
+
+.ml-main-without-header-and-aside .ml-main-inner {
+  min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
+}

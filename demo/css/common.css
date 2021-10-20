@@ -16,6 +16,10 @@ body {
   color: #fff;
 }
 
+.bg-color-gray {
+  background: #f4f4f4;
+}
+
 .bg-color-1 {
   background: #cff09e;
 }
@@ -49,6 +53,8 @@ body {
 pre {
   margin: 0;
   padding: 10px;
+  background: #f4f4f4;
+  border-radius: 5px;
 }
 
 .title-placeholder {
@@ -118,4 +124,11 @@ pre {
   line-height: 2;
   font-size: 18px;
   font-weight: bold;
+  margin: 10px 0;
+}
+
+.app-full-screen {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
 }
