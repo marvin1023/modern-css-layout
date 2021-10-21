@@ -5,8 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modern CSS Layout</title>
+    <link rel="stylesheet" href="./demo/css/common.css" />
+    <link rel="stylesheet" href="./layout.css" />
   </head>
   <body>
-    <a href="./demo/full-screen.html">背景水平铺满，内容水平居中布局</a>
+    <header class="ml-sticky-header bg-color-black">
+      <div class="ml-x-center justify-content p10">
+        <div class="logo-placeholder"></div>
+        <div class="text-placeholder"></div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="ml-x-center p10">
+        <h1 class="page-tt">DEMO 列表</h1>
+        <p class="des">
+          <a href="./demo/full-screen.html">背景水平铺满，内容水平居中布局</a>
+        </p>
+        <p class="des"><a href="./demo/left-aside.html">左/右边栏布局</a></p>
+        <p class="des">
+          <a href="./demo/sticky-header.html">sticky 头部布局</a>
+        </p>
+        <p class="des">
+          <a href="./demo/fixed-header-and-aside-grid.html"
+            >固定头部及边栏布局 grid 实现</a
+          >
+        </p>
+        <p class="des">
+          <a href="./demo/fixed-header-and-aside.html"
+            >固定头部及边栏布局 fixed 实现</a
+          >
+        </p>
+      </div>
+    </main>
   </body>
 </html>

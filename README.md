@@ -225,7 +225,54 @@ header.ml-sticky-header
 
 这里最可能出问题的在内容的滚动，当固定了头部和左边栏，滚动就只能在主体内容中进行，而不能使用默认的滚动条。
 
-Y 轴的滚动条还是比较好实现的，主要是 X 轴的滚动条，我们需要嵌套一层才能实现。
+Y 轴的滚动条还是比较好实现的，主要是 X 轴的滚动条，我们需要嵌套一层才能实现（由于高度可以根据内容自动伸展，而宽度则是由父容器本身的宽度来决定的，所以为了实现 X 轴的滚动，需要嵌套一层。）。
+
+#### grid 方案实现
+
+HTML 代码示意如下：
+
+```html
+<div class="ml-fixed-header-and-aside">
+  <header class="ml-header"></header>
+  <aside></aside>
+  <main class="ml-main">
+    <div class="ml-main-inner"></div>
+  </main>
+</div>
+```
+
+CSS 代码示意如下：
+
+```css
+/*
+* 固定顶部和左边栏布局
+* 采用 grid 布局实现
+*/
+
+.ml-fixed-header-and-aside {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: var(--ml-header-height) 1fr;
+  grid-template-columns: var(--ml-aside-left-width) 1fr;
+}
+
+/* header 占满行 */
+.ml-fixed-header-and-aside .ml-header {
+  grid-column: 1 / 3;
+}
+
+/* 实现主体内容 main Y 轴滚动 */
+.ml-fixed-header-and-aside .ml-main {
+  overflow: auto;
+}
+
+/* 实现主体内容 X 轴滚动 */
+.ml-fixed-header-and-aside .ml-main-inner {
+  min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
+}
+```
+
+#### fixed 方案实现
 
 ```html
 <!-- 固定头部 -->
@@ -283,8 +330,6 @@ Y 轴的滚动条还是比较好实现的，主要是 X 轴的滚动条，我们
 ```
 
 Y 轴滚动，可以通过设置 main 的高度（calc(100vh - var(--ml-header-height))）来实现；而 X 轴滚动，则需要嵌套一层 main-inner，设置最小宽度（calc(var(--ml-min-width) - var(--ml-aside-left-width))）来实现。
-
-由于高度可以根据内容自动伸展，而宽度则是由父容器本身的宽度来决定的，所以为了实现 X 轴的滚动，需要嵌套一层。
 
 ## CSS 文件
 
