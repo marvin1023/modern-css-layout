@@ -98,6 +98,7 @@
 
 /*
 * 固定顶部和左边栏布局
+* 采用 fixed 实现
 * 设置 margin top 与 left ，空出顶部与左边栏的位置
 * 设置高度，实现 main 区域的垂直滚动
 * 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动
@@ -110,5 +111,32 @@
 }
 
 .ml-main-without-header-and-aside .ml-main-inner {
+  min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
+}
+
+/*
+* 固定顶部和左边栏布局
+* 采用 grid 布局实现
+*/
+
+.ml-fixed-header-and-aside {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: var(--ml-header-height) 1fr;
+  grid-template-columns: var(--ml-aside-left-width) 1fr;
+}
+
+/* header 占满行 */
+.ml-fixed-header-and-aside .ml-header {
+  grid-column: 1 / 3;
+}
+
+/* 实现主体内容 main Y 轴滚动 */
+.ml-fixed-header-and-aside .ml-main {
+  overflow: auto;
+}
+
+/* 实现主体内容 X 轴滚动 */
+.ml-fixed-header-and-aside .ml-main-inner {
   min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
 }
