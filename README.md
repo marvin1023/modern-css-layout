@@ -10,6 +10,7 @@
 
 - `ml` 缩写表示 modern layout
 - 所有 demo 汇总地址：[Modern CSS Layout](https://marvin1023.github.io/modern-css-layout/index.html)
+- 所有布局样式，汇总于该仓库中的 `layout.css`
 
 ## 常见布局
 
@@ -28,7 +29,7 @@ HTML 结构示意如下：
 `bg-wrap` 表示背景层，用来承载全屏的背景设计，`ml-x-center` 用来实现内容水平居中。如
 `.header>.ml-x-center`, `.banner>.ml-x-center`
 
-内容层的 CSS 示意如下：
+内容层的 CSS 代码示意如下：
 
 ```css
 :root {
@@ -151,7 +152,7 @@ HTML 代码示意如下：
 </div>
 ```
 
-CSS 样式如下：
+CSS 代码示意如下：
 
 ```css
 :root {
@@ -201,10 +202,10 @@ CSS 样式如下：
 
 ### sticky 头部布局
 
-这个比较简单，直接实现，代码如下：
+这个比较简单，直接实现，代码示意如下：
 
 ```html
-header.ml-sticky-header
+<header class="ml-sticky-header"></header>
 ```
 
 ```css
@@ -280,6 +281,8 @@ CSS 代码示意如下：
 
 #### fixed 方案实现
 
+HTML 代码示意如下：
+
 ```html
 <!-- 固定头部 -->
 <header class="ml-fixed-header"></header>
@@ -290,6 +293,8 @@ CSS 代码示意如下：
   <div class="ml-main-inner"></div>
 </div>
 ```
+
+CSS 代码示意如下：
 
 ```css
 :root {
