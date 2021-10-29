@@ -4,13 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fixed header layout</title>
+    <title>grid aside layout</title>
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="../layout.css" />
     <style>
-      .ml-aside-left {
-        min-height: calc(100vh - var(--ml-header-height) - 80px);
-      }
       .main {
         margin-left: 20px;
       }
@@ -37,15 +34,20 @@
             <div class="text-placeholder" style="width: 75%"></div>
           </aside>
           <main class="main">
-            <h1 class="title">左/右边栏布局</h1>
+            <h1 class="title">左/右边栏布局 grid 实现</h1>
             <h3 class="guide-tt">HTML 代码示意如下：</h3>
+            <p class="des">左边栏布局</p>
             <pre>
-
 .ml-x-center.ml-main-with-aside-left>aside.aside-left+main.main
-
+            </pre>
+            <p class="des">右边栏布局</p>
+            <pre>
 .ml-x-center.ml-main-with-aside-right>main.main+aside.aside-right
+            </pre>
 
-.ml-x-center.ml-main-with-aside-both>aside.aside-left+main.main+aside.aside-right              
+            <p class="des">左右边栏布局</p>
+            <pre>
+.ml-x-center.ml-main-with-aside-both>aside.aside-left+main.main+aside.aside-right
             </pre>
             <h3 class="guide-tt">CSS 代码示意如下：</h3>
             <pre>

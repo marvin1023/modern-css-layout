@@ -38,35 +38,6 @@
   min-width: var(--ml-min-width);
 }
 
-/* 
-* 左边栏布局
-* 内容宽度为除掉边栏宽度后的剩余容器宽度
-*/
-.ml-main-with-aside-left {
-  display: grid;
-  grid-template-columns: var(--ml-aside-left-width) 1fr;
-}
-
-/* 
-* 右边栏布局
-* 内容宽度为除掉边栏宽度后的剩余容器宽度
-*/
-.ml-main-with-aside-right {
-  display: grid;
-  grid-template-columns: 1fr var(--ml-aside-right-width);
-}
-
-/* 
-* 左右边栏布局
-* 内容宽度为除掉边栏宽度后的剩余容器宽度
-*/
-.ml-main-with-aside-both {
-  display: grid;
-  grid-template-columns: var(--ml-aside-left-width) 1fr var(
-      --ml-aside-left-width
-    );
-}
-
 /* sticky header */
 .ml-sticky-header {
   position: sticky;
@@ -75,9 +46,39 @@
   z-index: var(--ml-header-z-index);
 }
 
-/* 
-* fixed header
+/*
+* 左右边栏布局
+* grid 布局实现
+* -----------------------------------------------------------------
 */
+
+/* 左边栏布局，内容宽度为除掉边栏宽度后的剩余容器宽度 */
+.ml-main-with-aside-left {
+  display: grid;
+  grid-template-columns: var(--ml-aside-left-width) 1fr;
+}
+
+/* 右边栏布局，内容宽度为除掉边栏宽度后的剩余容器宽度 */
+.ml-main-with-aside-right {
+  display: grid;
+  grid-template-columns: 1fr var(--ml-aside-right-width);
+}
+
+/* 左右边栏布局，内容宽度为除掉边栏宽度后的剩余容器宽度 */
+.ml-main-with-aside-both {
+  display: grid;
+  grid-template-columns: var(--ml-aside-left-width) 1fr var(
+      --ml-aside-left-width
+    );
+}
+
+/*
+* 固定顶部和左边栏布局
+* position fixed 实现
+* -----------------------------------------------------------------
+*/
+
+/* fixed header */
 .ml-fixed-header {
   position: fixed;
   left: 0;
@@ -87,7 +88,7 @@
   z-index: var(--ml-header-z-index);
 }
 
-/* 固定左边栏 */
+/* fixed aside */
 .ml-fixed-aside {
   position: fixed;
   top: var(--ml-header-height);
@@ -97,11 +98,8 @@
 }
 
 /*
-* 固定顶部和左边栏布局
-* 采用 fixed 实现
 * 设置 margin top 与 left ，空出顶部与左边栏的位置
 * 设置高度，实现 main 区域的垂直滚动
-* 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动
 */
 .ml-main-without-header-and-aside {
   margin-left: var(--ml-aside-left-width);
@@ -110,15 +108,18 @@
   overflow: auto;
 }
 
+/* 嵌套一层 main-inner，设置最小宽度，实现 main 区域的水平滚动 */
 .ml-main-without-header-and-aside .ml-main-inner {
   min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
 }
 
 /*
 * 固定顶部和左边栏布局
-* 采用 grid 布局实现
+* grid 布局实现
+* -----------------------------------------------------------------
 */
 
+/* 定义 grid */
 .ml-fixed-header-and-aside {
   display: grid;
   height: 100vh;
@@ -139,4 +140,47 @@
 /* 实现主体内容 X 轴滚动 */
 .ml-fixed-header-and-aside .ml-main-inner {
   min-width: calc(var(--ml-min-width) - var(--ml-aside-left-width));
+}
+
+/*
+* 左右边栏布局
+* float 布局实现，使用负 margin
+* -----------------------------------------------------------------
+*/
+
+/* 清除子元素 main，aside 的浮动 */
+.ml-float-wrap::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* 设置 float */
+.ml-float-main,
+.ml-float-aside-left,
+.ml-float-aside-right {
+  float: left;
+}
+
+/*
+* 设置主体内容宽度为100% 
+* 空出左右边栏的宽度
+*/
+.ml-float-main {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--ml-aside-left-width);
+  padding-right: var(--ml-aside-right-width);
+}
+
+/* 设置左边栏宽度，及使用负 margin 回到左边位置 */
+.ml-float-aside-left {
+  width: var(--ml-aside-left-width);
+  margin-left: -100%;
+}
+
+/* 设置右边栏宽度，及使用负 margin 回到右边栏位置 */
+.ml-float-aside-right {
+  width: var(--ml-aside-right-width);
+  margin-left: calc(0px - var(--ml-aside-right-width));
 }
