@@ -132,3 +132,11 @@ pre {
   grid-template-rows: auto auto 1fr auto;
   min-height: 100vh;
 }
+
+code {
+  background: #f4f4f4;
+  border-radius: 3px;
+  padding: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
