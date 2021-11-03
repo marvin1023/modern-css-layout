@@ -4,14 +4,22 @@
 
 - 使用 CSS 自定义属性，方便覆盖修改
 - 详解几种常见布局的实现，并提供 DEMO
-- 合理使用各种布局布局技术，如 Grid、flexbox 布局等。（在使用之前，请注意你需要兼容的浏览器，如果不兼容请放弃）
+- 根据场景，合理选中各种布局技术，如 Grid、flexbox 布局等。（在使用之前，请注意你需要兼容的浏览器，如果不兼容请放弃）
 
-## 说明
+## DEMO
 
-- `ml` 缩写表示 modern layout
-- 所有 demo 汇总地址：[Modern CSS Layout Demo](https://marvin1023.github.io/modern-css-layout/index.html)
+- [背景水平铺满，内容水平居中布局](https://marvin1023.github.io/modern-css-layout/demo/full-width.html)
+- [sticky 头部布局](https://marvin1023.github.io/modern-css-layout/demo/sticky-header.html)
+- [左/右边栏布局 grid 实现](https://marvin1023.github.io/modern-css-layout/demo/aside-grid.html)
+- [左/右边栏布局 float 实现](https://marvin1023.github.io/modern-css-layout/demo/aside-float.html)
+- [固定头部及边栏布局 grid 实现](https://marvin1023.github.io/modern-css-layout/demo/fixed-header-and-aside-grid.html)
+- [固定头部及边栏布局 fixed 实现](https://marvin1023.github.io/modern-css-layout/demo/fixed-header-and-aside.html)
+- [多行列表项响应式布局 grid 实现](https://marvin1023.github.io/modern-css-layout/demo/list-multi-lines.html)
+- [单行列表项响应式布局 flexbox 实现](https://marvin1023.github.io/modern-css-layout/demo/list-one-line.html)
 
-## 常见 PC 页面整体布局
+PS：`ml` 缩写表示 modern layout
+
+## 常见 PC 页面整体布局详解
 
 PS：页面整体布局样式，汇总于该仓库中的 `layout.css` 中。
 
@@ -342,25 +350,3 @@ CSS 代码示意如下：
 ```
 
 Y 轴滚动，可以通过设置 main 的高度（calc(100vh - var(--ml-header-height))）来实现；而 X 轴滚动，则需要嵌套一层 main-inner，设置最小宽度（calc(var(--ml-min-width) - var(--ml-aside-left-width))）来实现。
-
-## 常见 PC 列表项响应式布局
-
-对于固定宽度非响应式的列表项，直接写死宽度，不论是用 grid，flex，甚至是 float 一般都没什么问题。
-
-所以这里主要讨论响应式的列表项处理。
-
-### 多行列表项响应式布局
-
-对于多行的列表项的响应式布局，虽然 flexbox 可以通过设置 flex-wrap 来实现换行形成多行，但是我们首先考虑使用的还是更强大的 grid 布局。原因很简单：grid 可以实现 flexbox 实现不了的功能。
-
-详见：[多行列表项响应式布局](https://marvin1023.github.io/modern-css-layout/demo/list-multi-lines.html)
-
-### 单行列表项响应式布局
-
-至于单行的列表项，flexbox 已经很胜任了，就不需要往复杂里面搞了。
-
-详见：[单行列表项响应式布局](https://marvin1023.github.io/modern-css-layout/demo/list-one-line.html)
-
-## DEMO
-
-Demo 汇总地址：[Modern CSS Layout](https://marvin1023.github.io/modern-css-layout/index.html)
